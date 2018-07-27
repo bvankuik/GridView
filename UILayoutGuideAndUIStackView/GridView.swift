@@ -10,7 +10,7 @@ import UIKit
 
 class GridView: UIView {
     private let verticalStackView = UIStackView()
-    private let columnLayoutGuides: [UIView] // later: [UILayoutGuide]
+    private let columnLayoutGuides: [UILayoutGuide]
     private var nRows = 0
     private var horizontalViews: [UIView] = []
     
@@ -70,9 +70,8 @@ class GridView: UIView {
     // MARK: - Life cycle
     
     init(columns: Int) {
-        self.columnLayoutGuides = (0..<(columns-1)).map { _ in
-//            let guide = UILayoutGuide()
-            UIView()
+        self.columnLayoutGuides = (0 ..< columns-1).map { _ in
+            UILayoutGuide()
         }
         super.init(frame: CGRect())
         
@@ -86,16 +85,12 @@ class GridView: UIView {
             self.verticalStackView.leftAnchor.constraint(equalTo: self.leftAnchor),
             self.verticalStackView.topAnchor.constraint(equalTo: self.topAnchor),
             self.verticalStackView.rightAnchor.constraint(equalTo: self.rightAnchor),
-            self.verticalStackView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+            self.verticalStackView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
         ]
         self.addConstraints(constraints)
         
-        var colNumber = 0
         self.columnLayoutGuides.forEach {
-            $0.accessibilityIdentifier = "col_\(colNumber)"
-            $0.translatesAutoresizingMaskIntoConstraints = false
-            self.addSubview($0)
-            colNumber += 1
+            self.addLayoutGuide($0)
         }
         let columnLayoutGuideConstraints = self.columnLayoutGuides.flatMap {
             return [$0.topAnchor.constraint(equalTo: self.topAnchor),
