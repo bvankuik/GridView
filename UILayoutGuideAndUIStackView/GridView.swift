@@ -19,8 +19,9 @@ class GridView: UIView {
             fatalError("Number of views (\(views.count)) must be equal to number of columns plus 1 (\(self.columnLayoutGuides.count))")
         }
         
-        self.nRows += 1
         let horizontalView = UIView()
+        horizontalView.accessibilityIdentifier = "horizontalView_\(self.nRows)"
+        horizontalView.backgroundColor = .blue
         self.horizontalViews.append(horizontalView)
         self.verticalStackView.addArrangedSubview(horizontalView)
         views.forEach {
@@ -38,19 +39,33 @@ class GridView: UIView {
                 let nextView = views[i+1]
                 constraints.append(contentsOf: [
                     view.leftAnchor.constraint(equalTo: horizontalView.leftAnchor),
-                    view.rightAnchor.constraint(equalTo: layoutGuide.leftAnchor),
-                    nextView.leftAnchor.constraint(equalTo: layoutGuide.rightAnchor),
+                    view.rightAnchor.constraint(lessThanOrEqualTo: layoutGuide.leftAnchor),
+                    nextView.leftAnchor.constraint(greaterThanOrEqualTo: layoutGuide.rightAnchor),
                     layoutGuide.widthAnchor.constraint(equalToConstant: 10)
                 ])
             } else if i == (views.count - 1) {
                 print("last column")
-                constraints.append(view.rightAnchor.constraint(lessThanOrEqualTo: horizontalView.rightAnchor))
+//                let spacerView = UIView()
+//                spacerView.accessibilityIdentifier = "spacerView_\(self.nRows)"
+//                spacerView.translatesAutoresizingMaskIntoConstraints = false
+//                spacerView.backgroundColor = .yellow
+//                spacerView.setContentCompressionResistancePriority(UILayoutPriority(999), for: .horizontal)
+//                self.addSubview(spacerView)
+                
+                constraints.append(contentsOf: [
+                    view.rightAnchor.constraint(lessThanOrEqualTo: horizontalView.rightAnchor),
+//                    spacerView.leftAnchor.constraint(equalTo: horizontalView.rightAnchor),
+//                    spacerView.topAnchor.constraint(equalTo: horizontalView.topAnchor),
+//                    spacerView.bottomAnchor.constraint(equalTo: horizontalView.bottomAnchor),
+//                    spacerView.rightAnchor.constraint(equalTo: self.rightAnchor),
+//                    spacerView.widthAnchor.constraint(greaterThanOrEqualToConstant: 10)
+                ])
             } else {
                 print("middle column")
                 let layoutGuide = self.columnLayoutGuides[i]
                 let nextView = views[i+1]
                 constraints.append(contentsOf: [
-                    layoutGuide.leftAnchor.constraint(equalTo: view.rightAnchor),
+                    layoutGuide.leftAnchor.constraint(greaterThanOrEqualTo: view.rightAnchor),
                     layoutGuide.rightAnchor.constraint(equalTo: nextView.leftAnchor),
                     layoutGuide.widthAnchor.constraint(equalToConstant: 10)
                 ])
@@ -60,7 +75,9 @@ class GridView: UIView {
                 view.bottomAnchor.constraint(equalTo: horizontalView.bottomAnchor)
             ])
         }
+        
         self.addConstraints(constraints)
+        self.nRows += 1
     }
     
     // MARK: - Life cycle
@@ -73,6 +90,8 @@ class GridView: UIView {
         super.init(frame: CGRect())
         
         self.verticalStackView.translatesAutoresizingMaskIntoConstraints = false
+        self.verticalStackView.axis = .vertical
+        self.verticalStackView.alignment = .leading
         self.addSubview(self.verticalStackView)
         
         let constraints = [
@@ -83,10 +102,15 @@ class GridView: UIView {
         ]
         self.addConstraints(constraints)
         
+        var colNumber = 0
         self.columnLayoutGuides.forEach {
-            $0.backgroundColor = .green
+//            $0.backgroundColor = .green
+            $0.layer.borderColor = UIColor.black.cgColor
+            $0.layer.borderWidth = 1.0
+            $0.accessibilityIdentifier = "col_\(colNumber)"
             $0.translatesAutoresizingMaskIntoConstraints = false
             self.addSubview($0)
+            colNumber += 1
         }
         let columnLayoutGuideConstraints = self.columnLayoutGuides.flatMap {
             return [$0.topAnchor.constraint(equalTo: self.topAnchor),

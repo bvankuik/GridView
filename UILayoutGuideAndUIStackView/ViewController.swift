@@ -31,8 +31,8 @@ class ViewController: UIViewController {
         gridView.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(gridView)
         
-        if let firstDataRow = self.data.first {
-            let labels: [UILabel] = firstDataRow.map {
+        let labelData: [[UILabel]] = self.data.map {
+            let labels: [UILabel] = $0.map {
                 let label = UILabel()
                 label.font = UIFont.preferredFont(forTextStyle: .body)
                 label.text = $0
@@ -40,7 +40,11 @@ class ViewController: UIViewController {
                 label.textColor = .white
                 return label
             }
-            gridView.addRow(labels)
+            return labels
+        }
+
+        labelData.forEach {
+            gridView.addRow($0)
         }
         
         let guide = self.view.safeAreaLayoutGuide
