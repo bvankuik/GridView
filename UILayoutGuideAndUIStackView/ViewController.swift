@@ -27,6 +27,7 @@ class ViewController: UIViewController {
         guard let nCols = self.data.first?.count else {
             fatalError()
         }
+        
         let gridView = GridView(columns: nCols)
         gridView.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(gridView)

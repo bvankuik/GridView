@@ -8,19 +8,25 @@
 
 import UIKit
 
+// This class is meant for views to be properly laid out in a grid-like fashion. For growing vertically, a stackview is
+// used. On the horizontal axis, a containerview is used. Each view in a row is spaced out with a UILayoutGuide.
 class GridView: UIView {
+    override class var requiresConstraintBasedLayout: Bool {
+        return true
+    }
+    
     private let verticalStackView = UIStackView()
     private let columnLayoutGuides: [UILayoutGuide]
-    private var nRows = 0
     private var horizontalViews: [UIView] = []
+    private var spacing: CGFloat = 8
     
     func addRow(_ views: [UIView]) {
         guard views.count == (self.columnLayoutGuides.count + 1) else {
-            fatalError("Number of views (\(views.count)) must be equal to number of columns plus 1 (\(self.columnLayoutGuides.count))")
+            fatalError("Number of views (\(views.count)) must be equal to number of columns " +
+                "plus 1 (\(self.columnLayoutGuides.count))")
         }
         
         let horizontalView = UIView()
-        horizontalView.accessibilityIdentifier = "horizontalView_\(self.nRows)"
         self.horizontalViews.append(horizontalView)
         self.verticalStackView.addArrangedSubview(horizontalView)
         views.forEach {
@@ -40,7 +46,7 @@ class GridView: UIView {
                     view.leftAnchor.constraint(equalTo: horizontalView.leftAnchor),
                     view.rightAnchor.constraint(lessThanOrEqualTo: layoutGuide.leftAnchor),
                     nextView.leftAnchor.constraint(equalTo: layoutGuide.rightAnchor),
-                    layoutGuide.widthAnchor.constraint(equalToConstant: 10)
+                    layoutGuide.widthAnchor.constraint(equalToConstant: self.spacing)
                 ])
             } else if i == (views.count - 1) {
                 // Last column
@@ -54,7 +60,7 @@ class GridView: UIView {
                 constraints.append(contentsOf: [
                     layoutGuide.leftAnchor.constraint(greaterThanOrEqualTo: view.rightAnchor),
                     layoutGuide.rightAnchor.constraint(equalTo: nextView.leftAnchor),
-                    layoutGuide.widthAnchor.constraint(equalToConstant: 10)
+                    layoutGuide.widthAnchor.constraint(equalToConstant: self.spacing)
                 ])
             }
             constraints.append(contentsOf: [
@@ -64,10 +70,7 @@ class GridView: UIView {
         }
         
         self.addConstraints(constraints)
-        self.nRows += 1
     }
-    
-    // MARK: - Life cycle
     
     init(columns: Int) {
         self.columnLayoutGuides = (0 ..< columns-1).map { _ in
@@ -78,7 +81,7 @@ class GridView: UIView {
         self.verticalStackView.translatesAutoresizingMaskIntoConstraints = false
         self.verticalStackView.axis = .vertical
         self.verticalStackView.alignment = .leading
-        self.verticalStackView.spacing = 8
+        self.verticalStackView.spacing = self.spacing
         self.addSubview(self.verticalStackView)
         
         let constraints = [
