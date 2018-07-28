@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  GridViewController.swift
 //  UILayoutGuideAndUIStackView
 //
 //  Created by Bart van Kuik on 27/07/2018.
@@ -8,23 +8,9 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-    let data = [
-        ["Lorem", "ipsum", "dolor", "sit", "amet", "consectetur"],
-        ["adipiscing", "elit", "sed", "do", "eiusmod", "tempor"],
-        ["incididunt", "ut", "labore", "et", "dolore", "magna"],
-        ["aliqua", "Ut", "enim", "ad", "minim", "veniam"],
-        ["quis", "nostrud", "exercitation", "ullamco", "laboris", "nisi"],
-        ["ut", "aliquip", "ex", "ea", "commodo", "consequat"],
-        ["Duis", "aute", "irure", "dolor", "in", "reprehenderit"],
-        ["in", "voluptate", "velit", "esse", "cillum", "dolore"],
-        ["eu", "fugiat", "nulla", "pariatur", "Excepteur", "sint"],
-        ["occaecat", "cupidatat", "non", "proident", "sunt", "in"],
-        ["culpa", "qui", "officia", "deserunt", "mollit", "anim"]
-    ]
-
+class GridViewController: UIViewController {
     override func viewDidLoad() {
-        guard let nCols = self.data.first?.count else {
+        guard let nCols = globalData.first?.count else {
             fatalError()
         }
         
@@ -32,7 +18,7 @@ class ViewController: UIViewController {
         gridView.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(gridView)
         
-        let labelData: [[UILabel]] = self.data.map {
+        let labelData: [[UILabel]] = globalData.map {
             let labels: [UILabel] = $0.map {
                 let label = UILabel()
                 label.font = UIFont.preferredFont(forTextStyle: .body)
@@ -55,5 +41,10 @@ class ViewController: UIViewController {
             guide.trailingAnchor.constraintEqualToSystemSpacingAfter(gridView.trailingAnchor, multiplier: 1)
         ]
         self.view.addConstraints(constraints)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        self.tabBarItem.title = "Grid View"
     }
 }

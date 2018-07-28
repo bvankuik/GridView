@@ -8,22 +8,28 @@
 
 /* Begin PBXBuildFile section */
 		8923EB8E210B183200DAE2A4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8923EB8D210B183200DAE2A4 /* AppDelegate.swift */; };
-		8923EB90210B183200DAE2A4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8923EB8F210B183200DAE2A4 /* ViewController.swift */; };
+		8923EB90210B183200DAE2A4 /* GridViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8923EB8F210B183200DAE2A4 /* GridViewController.swift */; };
 		8923EB93210B183200DAE2A4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8923EB91210B183200DAE2A4 /* Main.storyboard */; };
 		8923EB95210B183300DAE2A4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8923EB94210B183300DAE2A4 /* Assets.xcassets */; };
 		8923EB98210B183300DAE2A4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8923EB96210B183300DAE2A4 /* LaunchScreen.storyboard */; };
 		8923EBA2210B210A00DAE2A4 /* GridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8923EBA1210B210A00DAE2A4 /* GridView.swift */; };
+		8923EBA4210C70AA00DAE2A4 /* CollectionDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8923EBA3210C70AA00DAE2A4 /* CollectionDemoViewController.swift */; };
+		8923EBA6210C722000DAE2A4 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8923EBA5210C722000DAE2A4 /* Data.swift */; };
+		8923EBA8210C77A200DAE2A4 /* DynamicTextCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8923EBA7210C77A200DAE2A4 /* DynamicTextCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		8923EB8A210B183200DAE2A4 /* UILayoutGuideAndUIStackView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UILayoutGuideAndUIStackView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8923EB8D210B183200DAE2A4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		8923EB8F210B183200DAE2A4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		8923EB8F210B183200DAE2A4 /* GridViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridViewController.swift; sourceTree = "<group>"; };
 		8923EB92210B183200DAE2A4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8923EB94210B183300DAE2A4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8923EB97210B183300DAE2A4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8923EB99210B183300DAE2A4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8923EBA1210B210A00DAE2A4 /* GridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridView.swift; sourceTree = "<group>"; };
+		8923EBA3210C70AA00DAE2A4 /* CollectionDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionDemoViewController.swift; sourceTree = "<group>"; };
+		8923EBA5210C722000DAE2A4 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
+		8923EBA7210C77A200DAE2A4 /* DynamicTextCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicTextCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,13 +62,16 @@
 		8923EB8C210B183200DAE2A4 /* UILayoutGuideAndUIStackView */ = {
 			isa = PBXGroup;
 			children = (
-				8923EB8D210B183200DAE2A4 /* AppDelegate.swift */,
-				8923EB8F210B183200DAE2A4 /* ViewController.swift */,
-				8923EBA1210B210A00DAE2A4 /* GridView.swift */,
-				8923EB91210B183200DAE2A4 /* Main.storyboard */,
 				8923EB94210B183300DAE2A4 /* Assets.xcassets */,
-				8923EB96210B183300DAE2A4 /* LaunchScreen.storyboard */,
+				8923EB8D210B183200DAE2A4 /* AppDelegate.swift */,
+				8923EBA3210C70AA00DAE2A4 /* CollectionDemoViewController.swift */,
+				8923EBA7210C77A200DAE2A4 /* DynamicTextCollectionViewCell.swift */,
+				8923EBA1210B210A00DAE2A4 /* GridView.swift */,
+				8923EB8F210B183200DAE2A4 /* GridViewController.swift */,
 				8923EB99210B183300DAE2A4 /* Info.plist */,
+				8923EB96210B183300DAE2A4 /* LaunchScreen.storyboard */,
+				8923EB91210B183200DAE2A4 /* Main.storyboard */,
+				8923EBA5210C722000DAE2A4 /* Data.swift */,
 			);
 			path = UILayoutGuideAndUIStackView;
 			sourceTree = "<group>";
@@ -138,7 +147,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8923EB90210B183200DAE2A4 /* ViewController.swift in Sources */,
+				8923EB90210B183200DAE2A4 /* GridViewController.swift in Sources */,
+				8923EBA8210C77A200DAE2A4 /* DynamicTextCollectionViewCell.swift in Sources */,
+				8923EBA6210C722000DAE2A4 /* Data.swift in Sources */,
+				8923EBA4210C70AA00DAE2A4 /* CollectionDemoViewController.swift in Sources */,
 				8923EBA2210B210A00DAE2A4 /* GridView.swift in Sources */,
 				8923EB8E210B183200DAE2A4 /* AppDelegate.swift in Sources */,
 			);
