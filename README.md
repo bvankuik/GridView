@@ -5,6 +5,4 @@ grid of labels or some other views.
 
 This is how it looks like:
 
-![Example in landscape](example_landscape-fs8.png)
-
-![Example in portrait](example_portrait-fs8.png)
+![Example](demo.gif)
