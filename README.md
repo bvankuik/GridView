@@ -5,4 +5,4 @@ grid of labels or some other views.
 
 This is how it looks like:
 
-![Example](demo_compressed.mov)
+![Example](demo.gif)
