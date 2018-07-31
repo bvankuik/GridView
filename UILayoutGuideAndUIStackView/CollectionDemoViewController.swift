@@ -55,7 +55,7 @@ class CollectionDemoViewController: UIViewController, UICollectionViewDataSource
     
     required init?(coder aDecoder: NSCoder) {
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-        layout.estimatedItemSize = CGSize(width: 200, height: 100)
+        layout.estimatedItemSize = UICollectionViewFlowLayoutAutomaticSize
         layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 8, right: 0)
         self.collectionView = UICollectionView(frame: CGRect(), collectionViewLayout: layout)
         
