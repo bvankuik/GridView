@@ -29,7 +29,7 @@
         <!--Collection View-->
         <scene sceneID="fqb-5E-qEB">
             <objects>
-                <viewController title="Collection View" id="oHt-oQ-63a" customClass="CollectionDemoViewController" customModule="UILayoutGuideAndUIStackView" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Collection View" id="oHt-oQ-63a" customClass="GridBackedByTableViewController" customModule="UILayoutGuideAndUIStackView" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jM2-7p-vrg">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -48,6 +48,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="CNW-Rb-Elh" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Pdv-lE-I6F">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
