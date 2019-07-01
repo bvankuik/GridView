@@ -36,9 +36,9 @@ class GridViewController: UIViewController {
         
         let guide = self.view.safeAreaLayoutGuide
         let constraints = [
-            gridView.leadingAnchor.constraintEqualToSystemSpacingAfter(guide.leadingAnchor, multiplier: 1),
-            gridView.topAnchor.constraintEqualToSystemSpacingBelow(guide.topAnchor, multiplier: 1),
-            guide.trailingAnchor.constraintEqualToSystemSpacingAfter(gridView.trailingAnchor, multiplier: 1)
+            gridView.leadingAnchor.constraint(equalToSystemSpacingAfter: guide.leadingAnchor, multiplier: 1),
+            gridView.topAnchor.constraint(equalToSystemSpacingBelow: guide.topAnchor, multiplier: 1),
+            guide.trailingAnchor.constraint(equalToSystemSpacingAfter: gridView.trailingAnchor, multiplier: 1)
         ]
         self.view.addConstraints(constraints)
     }
